@@ -1,9 +1,16 @@
 <h1>Listing notes</h1>
 
+<%= form_tag(search_notes_path, :method => "get") do %> 
+<%= label_tag(:titre, "Search for:") %>
+<%= text_field_tag(:titre, @lastSearch) %>
+<%= submit_tag("Search") %> 
+<% end %>
+
 <table>
   <tr>
     <th>User</th>
     <th>Content</th>
+    <th>Titre</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +20,7 @@
   <tr>
     <td><%= note.user %></td>
     <td><%= note.content %></td>
+    <td><%= note.titre %></td>
     <td><%= link_to 'Show', note %></td>
     <td><%= link_to 'Edit', edit_note_path(note) %></td>
     <td><%= link_to 'Destroy', note, confirm: 'Are you sure Eric ?', method: :delete %></td>

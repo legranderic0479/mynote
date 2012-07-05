@@ -1,4 +1,11 @@
 class NotesController < ApplicationController
+
+  def search
+    @notes = Note.search(params[:titre])
+    @lastSearch=params[:titre]
+    render "index"
+  end
+
   # GET /notes
   # GET /notes.json
   def index
